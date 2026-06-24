@@ -6,28 +6,28 @@ const profile = {
 
 const audienceCopy = {
   automotive: {
-    title: "For automotive and manufacturing recruiters",
+    title: "Automotive and manufacturing fit",
     text:
-      "I can speak the language of production pressure: quality issues, station status, supplier follow-up, takt time, defect trends, and visibility across teams.",
-    proof: ["Plant dashboards", "Quality intelligence", "Supplier trackers", "3D process visuals"],
+      "Relevant work includes vehicle fitment routing, plant handoff samples, quality visibility, supplier follow-up, and operations dashboard patterns.",
+    proof: ["Vehicle fitment", "Plant workflows", "Supplier follow-up", "Quality visibility"],
   },
   startup: {
-    title: "For startup founders and product teams",
+    title: "Product frontend fit",
     text:
-      "I can turn a rough workflow into a product-shaped MVP quickly: user flows, admin screens, payment or CRM integrations, and practical launch scope.",
-    proof: ["MVP builds", "SaaS workflows", "Admin panels", "Customer portals"],
+      "Project work shows React/TypeScript interfaces, data-heavy screens, product flows, responsive layouts, and deployable frontend structure.",
+    proof: ["React interfaces", "TypeScript structure", "Responsive UI", "Product flows"],
   },
   corporate: {
-    title: "For corporate and operations teams",
+    title: "Internal tools fit",
     text:
-      "I build internal tools that reduce manual work, make status visible, and replace fragile spreadsheet processes with reliable web applications.",
-    proof: ["Internal tools", "Dashboards", "Data cleanup", "Workflow automation"],
+      "Internal tool projects focus on queues, filters, notes, ownership, SLA risk, admin workflows, and visibility across repeated business tasks.",
+    proof: ["Ticket queues", "Admin workflows", "Dashboards", "Operational visibility"],
   },
-  upwork: {
-    title: "For Upwork clients",
+  automation: {
+    title: "Automation workflow fit",
     text:
-      "I focus on clear scope, fast prototypes, business-friendly communication, and deployed software that solves the actual problem behind the request.",
-    proof: ["Clear milestones", "Fast demos", "Deployable apps", "Ongoing improvements"],
+      "Automation-adjacent work includes RPA practice flows, repeatable task screens, progress tracking, evidence capture, and AI-assisted review.",
+    proof: ["RPA concepts", "Task flows", "Progress tracking", "Review workflows"],
   },
 };
 
@@ -35,7 +35,7 @@ const projects = [
   {
     name: "Shopify Vehicle Fitment Finder",
     type: "Automotive ecommerce workflow",
-    categories: ["Automotive", "Corporate", "Upwork"],
+    categories: ["Automotive", "Frontend"],
     signals: ["Shopify", "Vehicle fitment", "Catalog routing"],
     problem: "Automotive shoppers need to narrow parts by Year, Make, Model, and Product Type without landing on the wrong Shopify collection.",
     solution: "Built a cascading fitment workflow that maps vehicle choices to Shopify-style collection URLs and product filters.",
@@ -47,7 +47,7 @@ const projects = [
   {
     name: "Automotive Operations Live Lab",
     type: "Manufacturing workflow prototype",
-    categories: ["Automotive", "Corporate"],
+    categories: ["Automotive", "Internal Tools"],
     signals: ["Plant ops", "Quality", "Supplier risk"],
     problem: "Manufacturing teams need fast, scan-friendly ways to review shift handoffs, supplier follow-ups, and quality issues.",
     solution: "Built interactive demos for shift handoff, supplier risk, and quality console workflows using plant operations language.",
@@ -59,7 +59,7 @@ const projects = [
   {
     name: "Customer Support Ticketing Dashboard",
     type: "Internal operations dashboard",
-    categories: ["Corporate", "Startup", "Upwork"],
+    categories: ["Internal Tools", "Frontend"],
     signals: ["SLA workflows", "Ticket queues", "Forms"],
     problem: "Support teams need one console for ticket queues, SLA risk, conversations, notes, and create-ticket workflows.",
     solution: "Built a React TypeScript dashboard with filters, ticket detail management, validated forms, persistence, and tests.",
@@ -71,7 +71,7 @@ const projects = [
   {
     name: "UiPath Practice Lab",
     type: "Full-stack automation learning platform",
-    categories: ["Corporate", "Startup", "Upwork"],
+    categories: ["Automation", "Frontend"],
     signals: ["RPA", "Learning platform", "Supabase-ready"],
     problem: "RPA learners need hands-on tasks, progress tracking, feedback, and simulated automation scenarios.",
     solution: "Built a Next.js TypeScript platform with missions, scenario tasks, demo auth, Supabase-ready schema, and AI review flows.",
@@ -83,7 +83,7 @@ const projects = [
   {
     name: "Northstar Analytics Dashboard",
     type: "SaaS analytics dashboard",
-    categories: ["Startup", "Corporate", "Upwork"],
+    categories: ["Frontend", "Internal Tools"],
     signals: ["SaaS metrics", "Charts", "Account health"],
     problem: "SaaS teams need visibility into revenue, churn, account health, and filters without digging through raw tables.",
     solution: "Built an analytics dashboard with KPI cards, charts, account health filters, dark mode, validation, and tests.",
@@ -95,19 +95,19 @@ const projects = [
   {
     name: "Job Finder / Resume Tailoring MVP",
     type: "Career product MVP",
-    categories: ["Startup", "Upwork"],
-    signals: ["ATS scoring", "PDF export", "Outreach"],
-    problem: "Job seekers switch between job feeds, resume edits, ATS checks, PDF export, and outreach messages.",
-    solution: "Built a mobile-first MVP with job feeds, ATS scoring, AI-assisted rewrites, PDF export, and outreach templates.",
-    value: "Shows product thinking across discovery, scoring, editing, exporting, and outreach in one workflow.",
-    stack: ["JavaScript", "MVP UX", "ATS workflow", "PDF export", "AI-assisted copy"],
+    categories: ["Frontend", "Automation"],
+    signals: ["ATS scoring", "PDF export", "Applications"],
+    problem: "Job seekers switch between job feeds, resume edits, ATS checks, PDF export, and application notes.",
+    solution: "Built a mobile-first MVP with job feeds, ATS scoring, AI-assisted rewrites, PDF export, and saved application materials.",
+    value: "Shows product thinking across discovery, scoring, editing, exporting, and application workflow in one experience.",
+    stack: ["JavaScript", "MVP UX", "ATS workflow", "PDF export", "AI-assisted writing"],
     live: "https://aasresumebuilder.netlify.app/",
     code: "https://github.com/adilahmetsargin/job-finder",
   },
   {
     name: "Flagship Commerce",
     type: "E-commerce platform concept",
-    categories: ["Startup", "Corporate", "Upwork"],
+    categories: ["Frontend"],
     signals: ["Commerce UX", "Admin flows", "Checkout"],
     problem: "Commerce projects need catalog UX, admin workflows, checkout logic, and scalable frontend structure.",
     solution: "Built an e-commerce platform concept with product flows, admin patterns, checkout logic, state, and tests.",
@@ -207,7 +207,7 @@ function renderAudience(key = "automotive") {
   });
   document.querySelector("#audience-detail").innerHTML = `
     <div>
-      <p class="eyebrow">Selected path</p>
+      <p class="eyebrow">Role match</p>
       <h3>${target.title}</h3>
       <p>${target.text}</p>
     </div>
@@ -408,7 +408,7 @@ document.querySelectorAll(".lab-tabs button").forEach((button) => {
 });
 
 document.querySelectorAll('a[href^="mailto:adilahmetsargin@gmail.com"]').forEach((link) => {
-  link.href = `mailto:${profile.email}?subject=Portfolio conversation&body=Hi ${profile.name},%0D%0A%0D%0AI saw your portfolio and wanted to talk about a software project.`;
+  link.href = `mailto:${profile.email}?subject=Software role conversation&body=Hi ${profile.name},%0D%0A%0D%0AI reviewed your portfolio and would like to talk about a software role.`;
 });
 
 renderAudience();
