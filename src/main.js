@@ -124,27 +124,12 @@ const demos = {
   },
   handoff: {
     title: "Shift Handoff Board",
-    rows: [
-      ["Open", "Paint line", "Orange peel trend on left rear door", "M. Carter"],
-      ["Watch", "Final QA", "Two repeat trim clips flagged", "A. Singh"],
-      ["Open", "Weld cell", "Robot 3 cycle delay after reset", "J. Miller"],
-    ],
   },
   supplier: {
     title: "Supplier Follow-up Tracker",
-    rows: [
-      ["High", "Great Lakes Fasteners", "Clip B-114", "Due today"],
-      ["Medium", "Motor City Plastics", "Console bracket", "Due Fri"],
-      ["Low", "Nova Seating", "Foam insert", "Next week"],
-    ],
   },
   quality: {
     title: "Quality Console",
-    rows: [
-      ["Critical", "Door seal", "42 claims", "Inspect build window 06/10-06/17"],
-      ["Medium", "Infotainment", "19 claims", "Review harness supplier notes"],
-      ["Watch", "Rear camera", "11 claims", "Monitor next release"],
-    ],
   },
 };
 
@@ -198,6 +183,102 @@ const fitmentState = {
   make: "Aster",
   model: "Ridge LX",
   productType: "Front Bumper",
+};
+
+const handoffItems = [
+  {
+    id: "H-1042",
+    status: "Open",
+    area: "Paint line",
+    issue: "Orange peel trend on left rear door",
+    owner: "M. Carter",
+    next: "Check booth humidity log",
+    priority: "High",
+  },
+  {
+    id: "H-1043",
+    status: "Watch",
+    area: "Final QA",
+    issue: "Two repeat trim clips flagged",
+    owner: "A. Singh",
+    next: "Compare supplier lot photos",
+    priority: "Medium",
+  },
+  {
+    id: "H-1044",
+    status: "Open",
+    area: "Weld cell",
+    issue: "Robot 3 cycle delay after reset",
+    owner: "J. Miller",
+    next: "Review reset sequence timing",
+    priority: "Medium",
+  },
+];
+
+const supplierItems = [
+  {
+    id: "S-210",
+    risk: "High",
+    supplier: "Lakeside Fasteners",
+    part: "Clip B-114",
+    due: "Today",
+    owner: "M. Carter",
+    action: "Confirm revised ship time",
+    contacted: false,
+  },
+  {
+    id: "S-211",
+    risk: "Medium",
+    supplier: "Woodward Plastics",
+    part: "Console bracket",
+    due: "Friday",
+    owner: "A. Singh",
+    action: "Request updated PPAP notes",
+    contacted: true,
+  },
+  {
+    id: "S-212",
+    risk: "Low",
+    supplier: "Riverbend Seating",
+    part: "Foam insert",
+    due: "Next week",
+    owner: "J. Miller",
+    action: "Schedule routine follow-up",
+    contacted: false,
+  },
+];
+
+const qualityItems = [
+  {
+    id: "Q-330",
+    severity: "Critical",
+    component: "Door seal",
+    claims: 42,
+    action: "Inspect build window 06/10-06/17",
+    status: "Review",
+  },
+  {
+    id: "Q-331",
+    severity: "Medium",
+    component: "Infotainment",
+    claims: 19,
+    action: "Review harness supplier notes",
+    status: "Open",
+  },
+  {
+    id: "Q-332",
+    severity: "Watch",
+    component: "Rear camera",
+    claims: 11,
+    action: "Monitor next release",
+    status: "Open",
+  },
+];
+
+const sampleState = {
+  handoffStatus: "All",
+  supplierRisk: "All",
+  qualitySeverity: "All",
 };
 
 function renderAudience(key = "automotive") {
@@ -266,26 +347,234 @@ function renderDemo(key = "handoff") {
     return;
   }
 
+  if (key === "handoff") {
+    renderHandoffDemo(demo);
+    return;
+  }
+
+  if (key === "supplier") {
+    renderSupplierDemo(demo);
+    return;
+  }
+
+  if (key === "quality") {
+    renderQualityDemo(demo);
+    return;
+  }
+}
+
+function renderDemoShell(demo, eyebrow, content) {
   document.querySelector("#demo-panel").innerHTML = `
     <div class="demo-heading">
-      <p class="eyebrow">Interactive sample</p>
+      <p class="eyebrow">${eyebrow}</p>
       <h3>${demo.title}</h3>
     </div>
-    <div class="demo-table">
-      ${demo.rows
-        .map(
-          (row) => `
-            <article>
-              <span class="status-badge">${row[0]}</span>
-              <strong>${row[1]}</strong>
-              <p>${row[2]}</p>
-              <small>${row[3]}</small>
-            </article>
-          `,
-        )
-        .join("")}
-    </div>
+    ${content}
   `;
+}
+
+function renderSummary(items) {
+  return items
+    .map(
+      (item) => `
+        <article>
+          <strong>${item.value}</strong>
+          <span>${item.label}</span>
+        </article>
+      `,
+    )
+    .join("");
+}
+
+function renderPillOptions(name, options, activeValue) {
+  return options
+    .map(
+      (option) => `
+        <button class="${option === activeValue ? "active" : ""}" type="button" data-filter-group="${name}" data-filter-value="${option}">
+          ${option}
+        </button>
+      `,
+    )
+    .join("");
+}
+
+function renderHandoffDemo(demo) {
+  const visible =
+    sampleState.handoffStatus === "All"
+      ? handoffItems
+      : handoffItems.filter((item) => item.status === sampleState.handoffStatus);
+
+  renderDemoShell(
+    demo,
+    "Plant workflow sample",
+    `
+      <div class="sample-toolbar">
+        <div class="sample-pills">
+          ${renderPillOptions("handoffStatus", ["All", "Open", "Watch", "Done"], sampleState.handoffStatus)}
+        </div>
+        <div class="sample-summary">
+          ${renderSummary([
+            { label: "Open", value: handoffItems.filter((item) => item.status === "Open").length },
+            { label: "Watch", value: handoffItems.filter((item) => item.status === "Watch").length },
+            { label: "Done", value: handoffItems.filter((item) => item.status === "Done").length },
+          ])}
+        </div>
+      </div>
+      <div class="workflow-list">
+        ${visible
+          .map(
+            (item) => `
+              <article>
+                <div>
+                  <span class="status-badge">${item.status}</span>
+                  <strong>${item.area}</strong>
+                </div>
+                <p>${item.issue}</p>
+                <small>${item.id} • ${item.priority} priority • Owner: ${item.owner}</small>
+                <div class="workflow-action">
+                  <span>${item.next}</span>
+                  <button type="button" data-handoff-id="${item.id}">${item.status === "Done" ? "Reopen" : "Mark done"}</button>
+                </div>
+              </article>
+            `,
+          )
+          .join("")}
+      </div>
+    `,
+  );
+
+  bindSampleFilters();
+  document.querySelectorAll("[data-handoff-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = handoffItems.find((entry) => entry.id === button.dataset.handoffId);
+      item.status = item.status === "Done" ? "Open" : "Done";
+      renderHandoffDemo(demo);
+    });
+  });
+}
+
+function renderSupplierDemo(demo) {
+  const visible =
+    sampleState.supplierRisk === "All"
+      ? supplierItems
+      : supplierItems.filter((item) => item.risk === sampleState.supplierRisk);
+
+  renderDemoShell(
+    demo,
+    "Supplier workflow sample",
+    `
+      <div class="sample-toolbar">
+        <div class="sample-pills">
+          ${renderPillOptions("supplierRisk", ["All", "High", "Medium", "Low"], sampleState.supplierRisk)}
+        </div>
+        <div class="sample-summary">
+          ${renderSummary([
+            { label: "At risk", value: supplierItems.filter((item) => item.risk === "High").length },
+            { label: "Contacted", value: supplierItems.filter((item) => item.contacted).length },
+            { label: "Pending", value: supplierItems.filter((item) => !item.contacted).length },
+          ])}
+        </div>
+      </div>
+      <div class="workflow-list">
+        ${visible
+          .map(
+            (item) => `
+              <article>
+                <div>
+                  <span class="status-badge ${item.risk.toLowerCase()}">${item.risk}</span>
+                  <strong>${item.supplier}</strong>
+                </div>
+                <p>${item.part} • Due ${item.due}</p>
+                <small>${item.id} • Owner: ${item.owner}</small>
+                <div class="workflow-action">
+                  <span>${item.action}</span>
+                  <button type="button" data-supplier-id="${item.id}">
+                    ${item.contacted ? "Contacted" : "Mark contacted"}
+                  </button>
+                </div>
+              </article>
+            `,
+          )
+          .join("")}
+      </div>
+    `,
+  );
+
+  bindSampleFilters();
+  document.querySelectorAll("[data-supplier-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = supplierItems.find((entry) => entry.id === button.dataset.supplierId);
+      item.contacted = !item.contacted;
+      renderSupplierDemo(demo);
+    });
+  });
+}
+
+function renderQualityDemo(demo) {
+  const visible =
+    sampleState.qualitySeverity === "All"
+      ? qualityItems
+      : qualityItems.filter((item) => item.severity === sampleState.qualitySeverity);
+  const totalClaims = visible.reduce((sum, item) => sum + item.claims, 0);
+
+  renderDemoShell(
+    demo,
+    "Quality workflow sample",
+    `
+      <div class="sample-toolbar">
+        <div class="sample-pills">
+          ${renderPillOptions("qualitySeverity", ["All", "Critical", "Medium", "Watch"], sampleState.qualitySeverity)}
+        </div>
+        <div class="sample-summary">
+          ${renderSummary([
+            { label: "Visible claims", value: totalClaims },
+            { label: "Critical", value: qualityItems.filter((item) => item.severity === "Critical").length },
+            { label: "In review", value: qualityItems.filter((item) => item.status === "Review").length },
+          ])}
+        </div>
+      </div>
+      <div class="workflow-list">
+        ${visible
+          .map(
+            (item) => `
+              <article>
+                <div>
+                  <span class="status-badge ${item.severity.toLowerCase()}">${item.severity}</span>
+                  <strong>${item.component}</strong>
+                </div>
+                <p>${item.claims} claims • ${item.action}</p>
+                <small>${item.id} • Status: ${item.status}</small>
+                <div class="workflow-action">
+                  <span>${item.status === "Review" ? "Root cause review in progress" : "Needs owner review"}</span>
+                  <button type="button" data-quality-id="${item.id}">
+                    ${item.status === "Review" ? "Close review" : "Send to review"}
+                  </button>
+                </div>
+              </article>
+            `,
+          )
+          .join("")}
+      </div>
+    `,
+  );
+
+  bindSampleFilters();
+  document.querySelectorAll("[data-quality-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = qualityItems.find((entry) => entry.id === button.dataset.qualityId);
+      item.status = item.status === "Review" ? "Closed" : "Review";
+      renderQualityDemo(demo);
+    });
+  });
+}
+
+function bindSampleFilters() {
+  document.querySelectorAll("[data-filter-group]").forEach((button) => {
+    button.addEventListener("click", () => {
+      sampleState[button.dataset.filterGroup] = button.dataset.filterValue;
+      renderDemo(document.querySelector(".lab-tabs button.active").dataset.demo);
+    });
+  });
 }
 
 function uniqueFitmentValues(field, constraints = {}) {
