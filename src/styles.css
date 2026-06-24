@@ -742,6 +742,299 @@ h3 {
   color: var(--green);
 }
 
+.handoff-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.handoff-column {
+  min-height: 20rem;
+  padding: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 16, 20, 0.42);
+}
+
+.handoff-column-top,
+.handoff-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.handoff-column-top {
+  margin-bottom: 0.75rem;
+}
+
+.handoff-column-top span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(71, 209, 198, 0.14);
+  color: var(--teal);
+  font-weight: 850;
+}
+
+.handoff-cards {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.handoff-cards article,
+.supplier-detail,
+.quality-detail {
+  padding: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(16, 32, 39, 0.76);
+}
+
+.handoff-cards h4,
+.quality-detail h4 {
+  margin: 0.65rem 0 0.35rem;
+  font-size: 1rem;
+}
+
+.handoff-cards p,
+.quality-detail p {
+  margin-bottom: 0.65rem;
+  color: var(--soft);
+  line-height: 1.45;
+}
+
+.handoff-cards small,
+.quality-detail small {
+  color: var(--muted);
+}
+
+.handoff-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.handoff-card-actions button,
+.supplier-detail > button,
+.quality-detail button {
+  min-height: 2.25rem;
+  padding: 0 0.75rem;
+  border: 1px solid rgba(71, 209, 198, 0.24);
+  border-radius: 8px;
+  background: rgba(71, 209, 198, 0.1);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.handoff-footer {
+  margin-top: 0.85rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(243, 189, 85, 0.28);
+  border-radius: 8px;
+  background: rgba(243, 189, 85, 0.08);
+}
+
+.handoff-footer span {
+  color: var(--soft);
+  text-align: right;
+}
+
+.supplier-workspace {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.8fr) minmax(0, 1.2fr);
+  gap: 0.9rem;
+}
+
+.supplier-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.supplier-list button {
+  display: grid;
+  gap: 0.45rem;
+  min-height: 5.6rem;
+  padding: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 16, 20, 0.5);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.supplier-list button.active {
+  border-color: rgba(243, 189, 85, 0.78);
+  background: rgba(243, 189, 85, 0.12);
+}
+
+.supplier-list small,
+.supplier-detail dd,
+.supplier-timeline span {
+  color: var(--muted);
+}
+
+.supplier-detail {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.supplier-score {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.supplier-score span,
+.supplier-detail dt {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.supplier-score strong {
+  font-size: 2.6rem;
+}
+
+.supplier-score div {
+  height: 0.7rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(239, 247, 244, 0.11);
+}
+
+.supplier-score i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--teal), var(--gold), var(--red));
+}
+
+.supplier-detail-body p {
+  color: var(--soft);
+}
+
+.supplier-detail-body dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 0;
+}
+
+.supplier-detail dd {
+  margin: 0.2rem 0 0;
+}
+
+.supplier-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.supplier-timeline span {
+  min-height: 3rem;
+  padding: 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 16, 20, 0.42);
+}
+
+.quality-console {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.72fr);
+  grid-template-areas:
+    "metrics detail"
+    "bars detail";
+  gap: 0.9rem;
+}
+
+.quality-metrics {
+  grid-area: metrics;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.quality-metrics article {
+  min-height: 5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 16, 20, 0.46);
+}
+
+.quality-metrics strong,
+.quality-metrics span {
+  display: block;
+}
+
+.quality-metrics strong {
+  font-size: clamp(1.15rem, 2vw, 1.7rem);
+}
+
+.quality-metrics span {
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.quality-bars {
+  grid-area: bars;
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 16, 20, 0.44);
+}
+
+.quality-bars button {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.45fr) minmax(0, 1fr) auto;
+  gap: 0.7rem;
+  align-items: center;
+  min-height: 2.85rem;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.quality-bars button.active span {
+  color: var(--gold);
+}
+
+.quality-bars i {
+  display: block;
+  height: 0.9rem;
+  border-radius: 999px;
+  background: var(--teal);
+}
+
+.quality-bars strong {
+  color: var(--soft);
+}
+
+.quality-detail {
+  grid-area: detail;
+  align-content: start;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.quality-detail .status-badge {
+  justify-self: start;
+}
+
 .fitment-demo {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.85fr);
@@ -900,6 +1193,20 @@ h3 {
     justify-content: start;
   }
 
+  .handoff-board,
+  .supplier-workspace,
+  .quality-console,
+  .quality-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .quality-console {
+    grid-template-areas:
+      "metrics"
+      "bars"
+      "detail";
+  }
+
   .fitment-demo,
   .fitment-controls {
     grid-template-columns: 1fr;
@@ -925,8 +1232,27 @@ h3 {
   .project-grid,
   .metric-wall,
   .factory-line,
+  .supplier-detail-body dl,
+  .supplier-timeline,
   .lab-tabs {
     grid-template-columns: 1fr;
+  }
+
+  .handoff-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .handoff-footer span {
+    text-align: left;
+  }
+
+  .quality-bars button {
+    grid-template-columns: 1fr auto;
+  }
+
+  .quality-bars i {
+    grid-column: 1 / -1;
   }
 
   .hero-actions {

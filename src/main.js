@@ -279,6 +279,8 @@ const sampleState = {
   handoffStatus: "All",
   supplierRisk: "All",
   qualitySeverity: "All",
+  selectedSupplierId: "S-210",
+  selectedQualityId: "Q-330",
 };
 
 function renderAudience(key = "automotive") {
@@ -399,108 +401,117 @@ function renderPillOptions(name, options, activeValue) {
 }
 
 function renderHandoffDemo(demo) {
-  const visible =
-    sampleState.handoffStatus === "All"
-      ? handoffItems
-      : handoffItems.filter((item) => item.status === sampleState.handoffStatus);
+  const statuses = ["Open", "Watch", "Done"];
 
   renderDemoShell(
     demo,
-    "Plant workflow sample",
+    "Shift-change kanban sample",
     `
-      <div class="sample-toolbar">
-        <div class="sample-pills">
-          ${renderPillOptions("handoffStatus", ["All", "Open", "Watch", "Done"], sampleState.handoffStatus)}
-        </div>
-        <div class="sample-summary">
-          ${renderSummary([
-            { label: "Open", value: handoffItems.filter((item) => item.status === "Open").length },
-            { label: "Watch", value: handoffItems.filter((item) => item.status === "Watch").length },
-            { label: "Done", value: handoffItems.filter((item) => item.status === "Done").length },
-          ])}
-        </div>
-      </div>
-      <div class="workflow-list">
-        ${visible
+      <div class="handoff-board">
+        ${statuses
           .map(
-            (item) => `
-              <article>
-                <div>
-                  <span class="status-badge">${item.status}</span>
-                  <strong>${item.area}</strong>
+            (status) => `
+              <section class="handoff-column">
+                <div class="handoff-column-top">
+                  <strong>${status}</strong>
+                  <span>${handoffItems.filter((item) => item.status === status).length}</span>
                 </div>
-                <p>${item.issue}</p>
-                <small>${item.id} • ${item.priority} priority • Owner: ${item.owner}</small>
-                <div class="workflow-action">
-                  <span>${item.next}</span>
-                  <button type="button" data-handoff-id="${item.id}">${item.status === "Done" ? "Reopen" : "Mark done"}</button>
+                <div class="handoff-cards">
+                  ${handoffItems
+                    .filter((item) => item.status === status)
+                    .map(
+                      (item) => `
+                        <article>
+                          <span class="status-badge ${item.priority.toLowerCase()}">${item.priority}</span>
+                          <h4>${item.area}</h4>
+                          <p>${item.issue}</p>
+                          <small>${item.owner} • ${item.id}</small>
+                          <div class="handoff-card-actions">
+                            <button type="button" data-handoff-id="${item.id}" data-handoff-status="Watch">Watch</button>
+                            <button type="button" data-handoff-id="${item.id}" data-handoff-status="Done">Done</button>
+                          </div>
+                        </article>
+                      `,
+                    )
+                    .join("")}
                 </div>
-              </article>
+              </section>
             `,
           )
           .join("")}
       </div>
+      <div class="handoff-footer">
+        <strong>Next shift note</strong>
+        <span>${handoffItems.find((item) => item.status !== "Done")?.next || "No open handoff items"}</span>
+      </div>
     `,
   );
 
-  bindSampleFilters();
   document.querySelectorAll("[data-handoff-id]").forEach((button) => {
     button.addEventListener("click", () => {
       const item = handoffItems.find((entry) => entry.id === button.dataset.handoffId);
-      item.status = item.status === "Done" ? "Open" : "Done";
+      item.status = button.dataset.handoffStatus;
       renderHandoffDemo(demo);
     });
   });
 }
 
 function renderSupplierDemo(demo) {
-  const visible =
-    sampleState.supplierRisk === "All"
-      ? supplierItems
-      : supplierItems.filter((item) => item.risk === sampleState.supplierRisk);
+  const selected = supplierItems.find((item) => item.id === sampleState.selectedSupplierId) || supplierItems[0];
+  const riskScore = { High: 84, Medium: 56, Low: 24 }[selected.risk];
 
   renderDemoShell(
     demo,
-    "Supplier workflow sample",
+    "Supplier follow-up sample",
     `
-      <div class="sample-toolbar">
-        <div class="sample-pills">
-          ${renderPillOptions("supplierRisk", ["All", "High", "Medium", "Low"], sampleState.supplierRisk)}
-        </div>
-        <div class="sample-summary">
-          ${renderSummary([
-            { label: "At risk", value: supplierItems.filter((item) => item.risk === "High").length },
-            { label: "Contacted", value: supplierItems.filter((item) => item.contacted).length },
-            { label: "Pending", value: supplierItems.filter((item) => !item.contacted).length },
-          ])}
-        </div>
-      </div>
-      <div class="workflow-list">
-        ${visible
-          .map(
-            (item) => `
-              <article>
-                <div>
+      <div class="supplier-workspace">
+        <div class="supplier-list">
+          ${supplierItems
+            .map(
+              (item) => `
+                <button class="${item.id === selected.id ? "active" : ""}" type="button" data-supplier-select="${item.id}">
                   <span class="status-badge ${item.risk.toLowerCase()}">${item.risk}</span>
                   <strong>${item.supplier}</strong>
-                </div>
-                <p>${item.part} • Due ${item.due}</p>
-                <small>${item.id} • Owner: ${item.owner}</small>
-                <div class="workflow-action">
-                  <span>${item.action}</span>
-                  <button type="button" data-supplier-id="${item.id}">
-                    ${item.contacted ? "Contacted" : "Mark contacted"}
-                  </button>
-                </div>
-              </article>
-            `,
-          )
-          .join("")}
+                  <small>${item.part} • Due ${item.due}</small>
+                </button>
+              `,
+            )
+            .join("")}
+        </div>
+        <section class="supplier-detail">
+          <div class="supplier-score">
+            <span>Risk score</span>
+            <strong>${riskScore}</strong>
+            <div><i style="width: ${riskScore}%"></i></div>
+          </div>
+          <div class="supplier-detail-body">
+            <p>${selected.action}</p>
+            <dl>
+              <div><dt>Part</dt><dd>${selected.part}</dd></div>
+              <div><dt>Owner</dt><dd>${selected.owner}</dd></div>
+              <div><dt>Status</dt><dd>${selected.contacted ? "Contacted" : "Needs follow-up"}</dd></div>
+            </dl>
+          </div>
+          <div class="supplier-timeline">
+            <span>Created request</span>
+            <span>${selected.contacted ? "Supplier contacted" : "Waiting on supplier"}</span>
+            <span>${selected.due}</span>
+          </div>
+          <button type="button" data-supplier-id="${selected.id}">
+            ${selected.contacted ? "Undo contact" : "Mark contacted"}
+          </button>
+        </section>
       </div>
     `,
   );
 
-  bindSampleFilters();
+  document.querySelectorAll("[data-supplier-select]").forEach((button) => {
+    button.addEventListener("click", () => {
+      sampleState.selectedSupplierId = button.dataset.supplierSelect;
+      renderSupplierDemo(demo);
+    });
+  });
+
   document.querySelectorAll("[data-supplier-id]").forEach((button) => {
     button.addEventListener("click", () => {
       const item = supplierItems.find((entry) => entry.id === button.dataset.supplierId);
@@ -511,54 +522,55 @@ function renderSupplierDemo(demo) {
 }
 
 function renderQualityDemo(demo) {
-  const visible =
-    sampleState.qualitySeverity === "All"
-      ? qualityItems
-      : qualityItems.filter((item) => item.severity === sampleState.qualitySeverity);
-  const totalClaims = visible.reduce((sum, item) => sum + item.claims, 0);
+  const selected = qualityItems.find((item) => item.id === sampleState.selectedQualityId) || qualityItems[0];
+  const totalClaims = qualityItems.reduce((sum, item) => sum + item.claims, 0);
+  const maxClaims = Math.max(...qualityItems.map((item) => item.claims));
 
   renderDemoShell(
     demo,
-    "Quality workflow sample",
+    "Warranty claim analysis sample",
     `
-      <div class="sample-toolbar">
-        <div class="sample-pills">
-          ${renderPillOptions("qualitySeverity", ["All", "Critical", "Medium", "Watch"], sampleState.qualitySeverity)}
-        </div>
-        <div class="sample-summary">
+      <div class="quality-console">
+        <div class="quality-metrics">
           ${renderSummary([
-            { label: "Visible claims", value: totalClaims },
-            { label: "Critical", value: qualityItems.filter((item) => item.severity === "Critical").length },
+            { label: "Total claims", value: totalClaims },
+            { label: "Top issue", value: qualityItems[0].component },
             { label: "In review", value: qualityItems.filter((item) => item.status === "Review").length },
           ])}
         </div>
-      </div>
-      <div class="workflow-list">
-        ${visible
-          .map(
-            (item) => `
-              <article>
-                <div>
-                  <span class="status-badge ${item.severity.toLowerCase()}">${item.severity}</span>
-                  <strong>${item.component}</strong>
-                </div>
-                <p>${item.claims} claims • ${item.action}</p>
-                <small>${item.id} • Status: ${item.status}</small>
-                <div class="workflow-action">
-                  <span>${item.status === "Review" ? "Root cause review in progress" : "Needs owner review"}</span>
-                  <button type="button" data-quality-id="${item.id}">
-                    ${item.status === "Review" ? "Close review" : "Send to review"}
-                  </button>
-                </div>
-              </article>
-            `,
-          )
-          .join("")}
+        <div class="quality-bars">
+          ${qualityItems
+            .map(
+              (item) => `
+                <button class="${item.id === selected.id ? "active" : ""}" type="button" data-quality-select="${item.id}">
+                  <span>${item.component}</span>
+                  <i style="width: ${(item.claims / maxClaims) * 100}%"></i>
+                  <strong>${item.claims}</strong>
+                </button>
+              `,
+            )
+            .join("")}
+        </div>
+        <section class="quality-detail">
+          <span class="status-badge ${selected.severity.toLowerCase()}">${selected.severity}</span>
+          <h4>${selected.component}</h4>
+          <p>${selected.action}</p>
+          <small>${selected.id} • Status: ${selected.status}</small>
+          <button type="button" data-quality-id="${selected.id}">
+            ${selected.status === "Review" ? "Close review" : "Send to review"}
+          </button>
+        </section>
       </div>
     `,
   );
 
-  bindSampleFilters();
+  document.querySelectorAll("[data-quality-select]").forEach((button) => {
+    button.addEventListener("click", () => {
+      sampleState.selectedQualityId = button.dataset.qualitySelect;
+      renderQualityDemo(demo);
+    });
+  });
+
   document.querySelectorAll("[data-quality-id]").forEach((button) => {
     button.addEventListener("click", () => {
       const item = qualityItems.find((entry) => entry.id === button.dataset.qualityId);
