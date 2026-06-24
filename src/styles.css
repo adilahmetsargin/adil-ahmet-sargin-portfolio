@@ -565,7 +565,7 @@ h3 {
 
 .lab-tabs {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
   background: var(--line);
 }
@@ -615,6 +615,87 @@ h3 {
   text-align: center;
   font-size: 0.82rem;
   font-weight: 850;
+}
+
+.fitment-demo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.85fr);
+  gap: 1rem;
+}
+
+.fitment-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.fitment-controls label,
+.fitment-result {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 16, 20, 0.52);
+}
+
+.fitment-controls label {
+  display: grid;
+  gap: 0.55rem;
+  min-height: 6rem;
+  padding: 0.85rem;
+}
+
+.fitment-controls label span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.fitment-controls select {
+  width: 100%;
+  min-height: 2.8rem;
+  padding: 0 0.75rem;
+  border: 1px solid rgba(239, 247, 244, 0.16);
+  border-radius: 8px;
+  background: var(--bg-2);
+  color: var(--text);
+  font: inherit;
+  font-weight: 760;
+}
+
+.fitment-result {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  min-height: 13rem;
+  padding: 1rem;
+}
+
+.fitment-result strong,
+.fitment-result p,
+.fitment-result small {
+  display: block;
+}
+
+.fitment-result p {
+  margin-bottom: 0;
+  color: var(--soft);
+}
+
+.fitment-result code {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(71, 209, 198, 0.22);
+  border-radius: 8px;
+  color: var(--teal);
+  background: rgba(71, 209, 198, 0.1);
+  white-space: normal;
+  word-break: break-word;
+}
+
+.fitment-result small {
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .roadmap-section {
@@ -686,6 +767,11 @@ h3 {
   }
 
   .demo-table article {
+    grid-template-columns: 1fr;
+  }
+
+  .fitment-demo,
+  .fitment-controls {
     grid-template-columns: 1fr;
   }
 }
