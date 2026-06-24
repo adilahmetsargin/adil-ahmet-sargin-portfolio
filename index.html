@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Adil Ahmet Sargin builds business-focused software: automotive workflow tools, startup MVPs, internal dashboards, and automation systems."
+    />
+    <meta name="theme-color" content="#071014" />
+    <title>Adil Ahmet Sargin | Software Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;520;650;760;850&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero" id="top">
+        <nav class="topbar" aria-label="Primary navigation">
+          <a class="brand" href="#top" aria-label="Adil Ahmet Sargin home">
+            <span class="brand-mark">AS</span>
+            <span>Adil Ahmet Sargin</span>
+          </a>
+          <div class="nav-links">
+            <a href="#audiences">Audiences</a>
+            <a href="#work">Work</a>
+            <a href="#lab">Live Lab</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Michigan based software builder</p>
+            <h1>Software that turns messy business workflows into usable tools.</h1>
+            <p class="hero-lede">
+              I build web apps, dashboards, automations, and operations tools for
+              companies that need more than a generic frontend screen.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-action" href="#work">View portfolio proof</a>
+              <a class="secondary-action" href="mailto:adilahmetsargin@gmail.com">Start a conversation</a>
+            </div>
+          </div>
+
+          <div class="operations-visual" aria-label="Automotive operations dashboard preview">
+            <div class="visual-topline">
+              <span>Assembly Ops</span>
+              <strong>Live</strong>
+            </div>
+            <div class="factory-line">
+              <span class="station good">Stamp</span>
+              <span class="station good">Weld</span>
+              <span class="station watch">Paint</span>
+              <span class="station risk">Final QA</span>
+            </div>
+            <div class="metric-wall">
+              <article>
+                <span>OEE</span>
+                <strong>87%</strong>
+                <small>+6.4 this week</small>
+              </article>
+              <article>
+                <span>Open defects</span>
+                <strong>18</strong>
+                <small>4 high priority</small>
+              </article>
+              <article>
+                <span>Supplier risk</span>
+                <strong>Low</strong>
+                <small>2 follow-ups due</small>
+              </article>
+            </div>
+            <div class="flow-chart">
+              <span style="height: 62%"></span>
+              <span style="height: 78%"></span>
+              <span style="height: 44%"></span>
+              <span style="height: 86%"></span>
+              <span style="height: 57%"></span>
+              <span style="height: 70%"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-strip" aria-label="Core strengths">
+          <span>Automotive workflow tools</span>
+          <span>Startup MVPs</span>
+          <span>Internal dashboards</span>
+          <span>Automation systems</span>
+        </div>
+      </section>
+
+      <section class="section intro">
+        <div>
+          <p class="eyebrow">The positioning</p>
+          <h2>I am not trying to look like another frontend applicant.</h2>
+        </div>
+        <p>
+          This portfolio is built around business outcomes: clarify a workflow,
+          structure the data, ship the first useful version, then improve the
+          process with real user feedback.
+        </p>
+      </section>
+
+      <section class="section audience-section" id="audiences">
+        <div class="section-heading">
+          <p class="eyebrow">Choose the right proof path</p>
+          <h2>Different companies should see different reasons to trust me.</h2>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card active" data-audience="automotive">
+            <span>01</span>
+            <h3>Automotive & Manufacturing</h3>
+            <p>Digital twins, quality analytics, supplier tracking, plant dashboards, shift handoff tools.</p>
+          </article>
+          <article class="audience-card" data-audience="startup">
+            <span>02</span>
+            <h3>Startups & MVPs</h3>
+            <p>Fast validation, admin panels, product workflows, SaaS foundations, customer-facing apps.</p>
+          </article>
+          <article class="audience-card" data-audience="corporate">
+            <span>03</span>
+            <h3>Corporate Teams</h3>
+            <p>Internal tools that replace spreadsheets, improve visibility, and make repeat work easier.</p>
+          </article>
+          <article class="audience-card" data-audience="upwork">
+            <span>04</span>
+            <h3>Upwork Clients</h3>
+            <p>Clear scope, fast prototypes, practical communication, and deployable business software.</p>
+          </article>
+        </div>
+        <div class="audience-detail" id="audience-detail"></div>
+      </section>
+
+      <section class="section work-section" id="work">
+        <div class="section-heading">
+          <p class="eyebrow">Portfolio applications</p>
+          <h2>Projects framed by the problem they solve.</h2>
+        </div>
+        <div class="filter-row" aria-label="Project filters">
+          <button class="active" type="button" data-filter="All">All</button>
+          <button type="button" data-filter="Automotive">Automotive</button>
+          <button type="button" data-filter="Startup">Startup</button>
+          <button type="button" data-filter="Corporate">Corporate</button>
+          <button type="button" data-filter="Upwork">Upwork</button>
+        </div>
+        <div class="project-grid" id="project-grid"></div>
+      </section>
+
+      <section class="section lab-section" id="lab">
+        <div class="section-heading">
+          <p class="eyebrow">Live lab</p>
+          <h2>Small interactive demos that show how I think through operations software.</h2>
+        </div>
+        <div class="lab-shell">
+          <div class="lab-tabs" role="tablist" aria-label="Live demo tabs">
+            <button class="active" type="button" data-demo="handoff">Shift Handoff</button>
+            <button type="button" data-demo="supplier">Supplier Tracker</button>
+            <button type="button" data-demo="quality">Quality Console</button>
+          </div>
+          <div class="demo-panel" id="demo-panel"></div>
+        </div>
+      </section>
+
+      <section class="section roadmap-section">
+        <div>
+          <p class="eyebrow">How we will grow this</p>
+          <h2>Every new project gets added as business proof, not just another screenshot.</h2>
+        </div>
+        <div class="roadmap-list">
+          <article>
+            <strong>1. Pick a target audience</strong>
+            <span>Automotive recruiter, startup founder, corporate manager, or Upwork client.</span>
+          </article>
+          <article>
+            <strong>2. Build or connect a project</strong>
+            <span>Live demo, problem statement, outcome, stack, source link, and next improvement.</span>
+          </article>
+          <article>
+            <strong>3. Use it in outreach</strong>
+            <span>Personalized emails can point to the exact section that matches the company.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2>Let the portfolio open the right conversation.</h2>
+          <p>
+            I am available for software roles, freelance builds, workflow automation,
+            and practical web applications for teams that need tools people actually use.
+          </p>
+        </div>
+        <div class="contact-card">
+          <a class="primary-action" href="mailto:adilahmetsargin@gmail.com">Email me</a>
+          <a class="secondary-action" href="https://github.com/adilahmetsargin">GitHub profile</a>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
