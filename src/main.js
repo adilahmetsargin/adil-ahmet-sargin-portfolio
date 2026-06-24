@@ -65,7 +65,7 @@ const projects = [
     solution: "Built a React TypeScript dashboard with filters, ticket detail management, validated forms, persistence, and tests.",
     value: "Shows production-style frontend thinking: state management, responsive layouts, accessible forms, and workflow coverage.",
     stack: ["React", "TypeScript", "Vite", "Zustand", "React Hook Form", "Zod", "Vitest"],
-    live: "#lab",
+    live: "https://aas-northstar-support.netlify.app/",
     code: "https://github.com/adilahmetsargin/customer-support-ticketing-dashboard",
   },
   {
@@ -77,7 +77,7 @@ const projects = [
     solution: "Built a Next.js TypeScript platform with missions, scenario tasks, demo auth, Supabase-ready schema, and AI review flows.",
     value: "Shows automation-adjacent product work across UX, training workflows, database design, and RPA concepts.",
     stack: ["Next.js", "TypeScript", "Tailwind", "Supabase-ready", "AI feedback", "LocalStorage"],
-    live: "#lab",
+    live: "https://aasuipathpracticelab.netlify.app/",
     code: "https://github.com/adilahmetsargin/UiPath-Practice-Lab",
   },
   {
@@ -89,7 +89,7 @@ const projects = [
     solution: "Built an analytics dashboard with KPI cards, charts, account health filters, dark mode, validation, and tests.",
     value: "Shows dashboard UX, data presentation, state management, form validation, and testing discipline.",
     stack: ["Next.js", "TypeScript", "Tailwind", "Zustand", "Recharts", "Jest"],
-    live: "#lab",
+    live: "https://aas-northstar-analytics.netlify.app/",
     code: "https://github.com/adilahmetsargin/northstar-analytics-dashboard",
   },
   {
@@ -113,7 +113,7 @@ const projects = [
     solution: "Built an e-commerce platform concept with product flows, admin patterns, checkout logic, state, and tests.",
     value: "Shows polished commerce interfaces, maintainable architecture, and product workflow thinking.",
     stack: ["Next.js", "TypeScript", "Tailwind", "TanStack Query", "Zustand", "Supabase-ready"],
-    live: "#work",
+    live: "https://aas-flagship.netlify.app/",
     code: "https://github.com/adilahmetsargin/flagship-commerce",
   },
 ];
