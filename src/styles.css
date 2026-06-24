@@ -314,7 +314,12 @@ h3 {
   align-items: start;
 }
 
-.intro > p,
+.intro h2 {
+  max-width: 9.5ch;
+}
+
+.intro-proof p,
+.intro-proof li,
 .roadmap-section span,
 .contact-section p,
 .audience-detail p,
@@ -324,6 +329,38 @@ h3 {
 .demo-table small {
   color: var(--muted);
   line-height: 1.65;
+}
+
+.intro-proof p {
+  margin-bottom: 1.2rem;
+}
+
+.intro-proof ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.intro-proof li {
+  position: relative;
+  min-height: 3.2rem;
+  padding: 0.75rem 0.9rem 0.75rem 2.15rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.intro-proof li::before {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  top: 1.2rem;
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: var(--gold);
 }
 
 .section-heading {
