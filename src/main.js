@@ -37,8 +37,8 @@ const projects = [
     type: "Automotive ecommerce workflow",
     categories: ["Automotive", "Corporate", "Upwork"],
     problem: "Automotive shoppers need to narrow parts by Year, Make, Model, and Product Type without landing on the wrong Shopify collection.",
-    solution: "Built a client-safe demo of a cascading fitment workflow with generated Shopify-style collection URLs and fully fictional vehicle data.",
-    value: "Shows the exact automotive ecommerce pattern recruiters and Shopify clients care about without exposing any client name, data, or code.",
+    solution: "Built a cascading fitment workflow that maps vehicle selections to Shopify-style collection URLs and product-type filters.",
+    value: "Shows automotive ecommerce experience: cleaner product discovery, fewer wrong-fit clicks, and a faster path from vehicle selection to catalog results.",
     stack: ["JavaScript", "Vehicle data modeling", "Shopify URL logic", "Responsive UI"],
     live: "#lab",
     liveLabel: "Open fitment demo",
@@ -73,7 +73,7 @@ const projects = [
     type: "Full-stack automation learning platform",
     categories: ["Corporate", "Startup", "Upwork"],
     problem: "RPA learners need hands-on practice tasks, progress tracking, feedback, and simulated automation scenarios instead of passive lessons.",
-    solution: "Built a Next.js TypeScript practice platform with missions, scenarios, demo auth mode, Supabase-ready schema, and AI/mock feedback paths.",
+    solution: "Built a Next.js TypeScript practice platform with missions, scenarios, demo auth mode, Supabase-ready schema, and AI-assisted review flows.",
     value: "Strong proof for automation-adjacent roles: it connects product UX, training workflows, database design, and practical RPA concepts.",
     stack: ["Next.js", "TypeScript", "Tailwind", "Supabase-ready", "AI feedback", "LocalStorage"],
     live: "#lab",
@@ -378,7 +378,7 @@ function renderFitmentDemo() {
         <strong>${fitmentState.year} ${fitmentState.make} ${fitmentState.model}</strong>
         <p>${fitmentState.productType}</p>
         <code>${collectionUrl}</code>
-        <small>Fictional dataset and Shopify-style routing built for portfolio demonstration.</small>
+        <small>Example catalog flow showing how vehicle fitment choices can route shoppers to the right Shopify collection.</small>
       </div>
     </div>
   `;
