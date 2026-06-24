@@ -36,6 +36,7 @@ const projects = [
     name: "Shopify Vehicle Fitment Finder",
     type: "Automotive ecommerce workflow",
     categories: ["Automotive", "Corporate", "Upwork"],
+    signals: ["Shopify", "Vehicle fitment", "Catalog routing"],
     problem: "Automotive shoppers need to narrow parts by Year, Make, Model, and Product Type without landing on the wrong Shopify collection.",
     solution: "Built a cascading fitment workflow that maps vehicle choices to Shopify-style collection URLs and product filters.",
     value: "Shows automotive ecommerce experience: cleaner product discovery, fewer wrong-fit clicks, and faster catalog routing.",
@@ -47,6 +48,7 @@ const projects = [
     name: "Automotive Operations Live Lab",
     type: "Manufacturing workflow prototype",
     categories: ["Automotive", "Corporate"],
+    signals: ["Plant ops", "Quality", "Supplier risk"],
     problem: "Manufacturing teams need fast, scan-friendly ways to review shift handoffs, supplier follow-ups, and quality issues.",
     solution: "Built interactive demos for shift handoff, supplier risk, and quality console workflows using plant operations language.",
     value: "Shows how I structure operations software around status visibility, ownership, and fast decisions.",
@@ -58,6 +60,7 @@ const projects = [
     name: "Customer Support Ticketing Dashboard",
     type: "Internal operations dashboard",
     categories: ["Corporate", "Startup", "Upwork"],
+    signals: ["SLA workflows", "Ticket queues", "Forms"],
     problem: "Support teams need one console for ticket queues, SLA risk, conversations, notes, and create-ticket workflows.",
     solution: "Built a React TypeScript dashboard with filters, ticket detail management, validated forms, persistence, and tests.",
     value: "Shows production-style frontend thinking: state management, responsive layouts, accessible forms, and workflow coverage.",
@@ -69,6 +72,7 @@ const projects = [
     name: "UiPath Practice Lab",
     type: "Full-stack automation learning platform",
     categories: ["Corporate", "Startup", "Upwork"],
+    signals: ["RPA", "Learning platform", "Supabase-ready"],
     problem: "RPA learners need hands-on tasks, progress tracking, feedback, and simulated automation scenarios.",
     solution: "Built a Next.js TypeScript platform with missions, scenario tasks, demo auth, Supabase-ready schema, and AI review flows.",
     value: "Shows automation-adjacent product work across UX, training workflows, database design, and RPA concepts.",
@@ -80,6 +84,7 @@ const projects = [
     name: "Northstar Analytics Dashboard",
     type: "SaaS analytics dashboard",
     categories: ["Startup", "Corporate", "Upwork"],
+    signals: ["SaaS metrics", "Charts", "Account health"],
     problem: "SaaS teams need visibility into revenue, churn, account health, and filters without digging through raw tables.",
     solution: "Built an analytics dashboard with KPI cards, charts, account health filters, dark mode, validation, and tests.",
     value: "Shows dashboard UX, data presentation, state management, form validation, and testing discipline.",
@@ -91,6 +96,7 @@ const projects = [
     name: "Job Finder / Resume Tailoring MVP",
     type: "Career product MVP",
     categories: ["Startup", "Upwork"],
+    signals: ["ATS scoring", "PDF export", "Outreach"],
     problem: "Job seekers switch between job feeds, resume edits, ATS checks, PDF export, and outreach messages.",
     solution: "Built a mobile-first MVP with job feeds, ATS scoring, AI-assisted rewrites, PDF export, and outreach templates.",
     value: "Shows product thinking across discovery, scoring, editing, exporting, and outreach in one workflow.",
@@ -102,6 +108,7 @@ const projects = [
     name: "Flagship Commerce",
     type: "E-commerce platform concept",
     categories: ["Startup", "Corporate", "Upwork"],
+    signals: ["Commerce UX", "Admin flows", "Checkout"],
     problem: "Commerce projects need catalog UX, admin workflows, checkout logic, and scalable frontend structure.",
     solution: "Built an e-commerce platform concept with product flows, admin patterns, checkout logic, state, and tests.",
     value: "Shows polished commerce interfaces, maintainable architecture, and product workflow thinking.",
@@ -218,7 +225,7 @@ function renderProjects(filter = "All") {
         <article class="project-card">
           <div class="project-card-top">
             <p class="eyebrow">${project.type}</p>
-            <span>${project.categories.join(" / ")}</span>
+            <span>${project.signals.join(" • ")}</span>
           </div>
           <h3>${project.name}</h3>
           <dl>
