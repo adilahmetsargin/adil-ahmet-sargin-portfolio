@@ -1156,6 +1156,118 @@ h3 {
   padding: 1rem;
 }
 
+.landing-hero {
+  min-height: 84vh;
+}
+
+.landing-visual {
+  display: grid;
+  align-content: space-between;
+  gap: 1rem;
+  min-height: 28rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(239, 247, 244, 0.1), rgba(239, 247, 244, 0.04)),
+    rgba(7, 16, 20, 0.48);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.22);
+}
+
+.landing-checklist {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.landing-checklist span {
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 16, 20, 0.48);
+  color: var(--soft);
+  font-weight: 760;
+}
+
+.landing-section {
+  border-top: 1px solid var(--line);
+}
+
+.landing-profile {
+  max-width: 58rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(239, 247, 244, 0.08);
+}
+
+.landing-profile p {
+  margin-bottom: 0;
+  color: var(--soft);
+  line-height: 1.65;
+}
+
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.signal-grid article {
+  min-height: 12rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 16, 20, 0.44);
+}
+
+.signal-grid strong,
+.signal-grid span {
+  display: block;
+}
+
+.signal-grid strong {
+  margin-bottom: 0.6rem;
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.signal-grid span {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.landing-projects {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.landing-projects article {
+  display: grid;
+  align-content: start;
+  gap: 0.8rem;
+  min-height: 22rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(239, 247, 244, 0.08);
+}
+
+.landing-projects h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+}
+
+.landing-projects p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.landing-projects .project-actions {
+  align-self: end;
+  margin-top: auto;
+}
+
 @media (max-width: 920px) {
   .hero {
     min-height: auto;
@@ -1174,9 +1286,15 @@ h3 {
     min-height: 26rem;
   }
 
+  .landing-visual {
+    min-height: 22rem;
+  }
+
   .hero-strip,
   .audience-grid,
-  .project-grid {
+  .project-grid,
+  .landing-projects,
+  .signal-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1230,6 +1348,8 @@ h3 {
   .hero-strip,
   .audience-grid,
   .project-grid,
+  .landing-projects,
+  .signal-grid,
   .metric-wall,
   .factory-line,
   .supplier-detail-body dl,

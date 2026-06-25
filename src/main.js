@@ -8,26 +8,26 @@ const audienceCopy = {
   automotive: {
     title: "Automotive and manufacturing fit",
     text:
-      "Relevant work includes vehicle fitment routing, plant handoff samples, quality visibility, supplier follow-up, and operations dashboard patterns.",
+      "Useful for teams dealing with vehicle catalog logic, manufacturing handoffs, supplier status, quality issues, and plant-level visibility.",
     proof: ["Vehicle fitment", "Plant workflows", "Supplier follow-up", "Quality visibility"],
   },
   startup: {
-    title: "Product frontend fit",
+    title: "SaaS product frontend fit",
     text:
-      "Project work shows React/TypeScript interfaces, data-heavy screens, product flows, responsive layouts, and deployable frontend structure.",
-    proof: ["React interfaces", "TypeScript structure", "Responsive UI", "Product flows"],
+      "Useful for product teams that need dashboards, account views, onboarding flows, support consoles, responsive UI, and fast iteration.",
+    proof: ["SaaS dashboards", "React interfaces", "TypeScript structure", "Product flows"],
   },
   corporate: {
     title: "Internal tools fit",
     text:
-      "Internal tool projects focus on queues, filters, notes, ownership, SLA risk, admin workflows, and visibility across repeated business tasks.",
+      "Useful for teams replacing spreadsheets or scattered tools with queues, filters, notes, ownership, SLA risk, and admin workflows.",
     proof: ["Ticket queues", "Admin workflows", "Dashboards", "Operational visibility"],
   },
   automation: {
-    title: "Automation workflow fit",
+    title: "Automation and fintech workflow fit",
     text:
-      "Automation-adjacent work includes RPA practice flows, repeatable task screens, progress tracking, evidence capture, and AI-assisted review.",
-    proof: ["RPA concepts", "Task flows", "Progress tracking", "Review workflows"],
+      "Useful for workflow-heavy teams that need structured tasks, review states, audit-friendly screens, progress tracking, and repeatable decisions.",
+    proof: ["Task flows", "Review states", "Progress tracking", "Audit-friendly UI"],
   },
 };
 
