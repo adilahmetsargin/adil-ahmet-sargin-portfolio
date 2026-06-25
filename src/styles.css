@@ -135,17 +135,17 @@ p {
 }
 
 h1 {
-  max-width: 13.5ch;
+  max-width: 20ch;
   margin-bottom: 1.2rem;
-  font-size: 5.35rem;
-  line-height: 1;
+  font-size: 3.65rem;
+  line-height: 1.08;
   letter-spacing: 0;
   font-weight: 850;
 }
 
 h2 {
   margin-bottom: 0;
-  font-size: 3.45rem;
+  font-size: 2.85rem;
   line-height: 1.06;
   letter-spacing: 0;
   font-weight: 850;
@@ -1169,7 +1169,7 @@ h3 {
 
 .landing-hero h1 {
   max-width: 20ch;
-  font-size: 3.6rem;
+  font-size: 3.65rem;
   line-height: 1.08;
 }
 
@@ -1290,9 +1290,9 @@ h3 {
 
   h1,
   .landing-hero h1 {
-    max-width: 18ch;
-    font-size: 3.25rem;
-    line-height: 1.07;
+    max-width: 20ch;
+    font-size: 3.1rem;
+    line-height: 1.08;
   }
 
   h2 {
@@ -1366,14 +1366,14 @@ h3 {
   }
 
   h1 {
-    max-width: 12ch;
-    font-size: 3rem;
-    line-height: 1.05;
+    max-width: 14ch;
+    font-size: 2.55rem;
+    line-height: 1.08;
   }
 
   .landing-hero h1 {
-    max-width: 13ch;
-    font-size: 2.65rem;
+    max-width: 14ch;
+    font-size: 2.55rem;
   }
 
   h2 {
