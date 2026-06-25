@@ -145,8 +145,8 @@ h1 {
 
 h2 {
   margin-bottom: 0;
-  font-size: 2.85rem;
-  line-height: 1.06;
+  font-size: 2.25rem;
+  line-height: 1.12;
   letter-spacing: 0;
   font-weight: 850;
 }
@@ -320,7 +320,22 @@ h3 {
 }
 
 .intro h2 {
-  max-width: 9.5ch;
+  max-width: 34rem;
+  font-size: 1.9rem;
+  line-height: 1.12;
+}
+
+.section-heading h2 {
+  max-width: 52rem;
+  font-size: 2.35rem;
+  line-height: 1.14;
+}
+
+.roadmap-section h2,
+.contact-section h2 {
+  max-width: 32rem;
+  font-size: 2.2rem;
+  line-height: 1.14;
 }
 
 .intro-proof p,
@@ -1296,7 +1311,16 @@ h3 {
   }
 
   h2 {
-    font-size: 2.75rem;
+    font-size: 2rem;
+  }
+
+  .intro h2,
+  .section-heading h2,
+  .roadmap-section h2,
+  .contact-section h2 {
+    max-width: 100%;
+    font-size: 2rem;
+    line-height: 1.14;
   }
 
   .hero-grid,
@@ -1377,8 +1401,16 @@ h3 {
   }
 
   h2 {
-    font-size: 2.25rem;
-    line-height: 1.08;
+    font-size: 1.75rem;
+    line-height: 1.14;
+  }
+
+  .intro h2,
+  .section-heading h2,
+  .roadmap-section h2,
+  .contact-section h2 {
+    font-size: 1.75rem;
+    line-height: 1.14;
   }
 
   .hero-lede {
