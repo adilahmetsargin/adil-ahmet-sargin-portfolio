@@ -1390,31 +1390,37 @@ h3 {
   }
 
   h1 {
-    max-width: 14ch;
-    font-size: 2.55rem;
-    line-height: 1.08;
+    max-width: 100%;
+    font-size: 2.08rem;
+    line-height: 1.14;
   }
 
   .landing-hero h1 {
-    max-width: 14ch;
-    font-size: 2.55rem;
+    max-width: 100%;
+    font-size: 2.08rem;
+    line-height: 1.14;
   }
 
   h2 {
-    font-size: 1.75rem;
-    line-height: 1.14;
+    font-size: 1.45rem;
+    line-height: 1.18;
   }
 
   .intro h2,
   .section-heading h2,
   .roadmap-section h2,
   .contact-section h2 {
-    font-size: 1.75rem;
-    line-height: 1.14;
+    font-size: 1.45rem;
+    line-height: 1.18;
+  }
+
+  .intro h2 {
+    font-size: 1.32rem;
   }
 
   .hero-lede {
-    font-size: 1.04rem;
+    font-size: 0.98rem;
+    line-height: 1.62;
   }
 
   .hero-actions,
@@ -1461,7 +1467,28 @@ h3 {
     min-height: auto;
   }
 
-  .project-card h3,
+  .project-card h3 {
+    min-height: 0;
+    font-size: 1.55rem;
+    line-height: 1.16;
+  }
+
+  .audience-detail h3,
+  .demo-heading h3,
+  .landing-projects h3 {
+    font-size: 1.35rem;
+    line-height: 1.16;
+  }
+
+  .landing-profile p,
+  .signal-grid span,
+  .landing-projects p:not(.eyebrow),
+  .intro-proof p,
+  .intro-proof li {
+    font-size: 0.95rem;
+    line-height: 1.58;
+  }
+
   .stack-list {
     min-height: 0;
   }
